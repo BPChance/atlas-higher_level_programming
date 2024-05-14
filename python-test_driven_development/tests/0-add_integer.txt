@@ -1,0 +1,35 @@
+"""Function that adds two integers"""
+
+def add_integer(a, b=98):
+"""
+Returns the ssum of two integers otherwise raises TypeError
+
+# positive test
+>>> add_integer(5, 7)
+12
+
+# float test
+>>> add_integer(5, 3.5)
+8
+
+# floats test
+>>> add_integer(3.2, 4.8)
+7
+
+# not a integer test
+>>> add_integer("Hi", 7)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+# not b integer test
+>>> add_integer(5, "Hi")
+Traceback (most recent call last)
+    ...
+TypeError: b must be an integer
+
+# negative test
+>>> add_integer(-5, 25)
+20
+
+"""
