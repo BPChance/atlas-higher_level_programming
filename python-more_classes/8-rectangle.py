@@ -2,14 +2,12 @@
 """defines a class"""
 
 
-
 class Rectangle:
     """defines a rectangle"""
 
 
     number_of_instances = 0
     print_symbol = "#"
-
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
