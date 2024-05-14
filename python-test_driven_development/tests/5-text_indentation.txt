@@ -1,0 +1,17 @@
+ # doctest for 5-text_indentation
+ >>> text_indentation("This is a sentence. This is another one? And a third one: Let's see.")
+    This is a sentence
+    This is another one
+    And a third one
+    Let's see
+
+    >>> text_indentation("Hello. How are you? I'm fine: thank you.")
+    Hello
+    How are you
+    I'm fine
+    thank you
+
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
