@@ -2,7 +2,7 @@
 """defines a class"""
 
 
-class Rectangle:
+class Rectangle():
     """defines a rectangle"""
 
     number_of_instances = 0
