@@ -50,7 +50,7 @@ class Rectangle:
             return ""
         rectangle = ""
         if isinstance(self.print_symbol, list):
-            symbol = "[" + ", ".join("'" + str(x) + \
+            symbol = "[" + ", ".join("'" + str(x) +
                                      "'" for x in self.print_symbol) + "]"
         else:
             symbol = str(self.print_symbol)
