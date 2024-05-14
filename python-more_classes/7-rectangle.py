@@ -48,10 +48,14 @@ class Rectangle:
     def __str__(self):
         if self.width == 0 or self.height == 0:
             return ""
-
         rectangle = ""
+        if isinstance(self.print_symbol, list):
+            symbol = "[" + ",".join("" + str(x) + "" for x in self.print_symbol) + "]"
+        else:
+            symbol = str(self.print_symbol)
+
         for i in range(self.height):
-            rectangle += str(Rectangle.print_symbol) * self.width
+            rectangle += (symbol * self.width)
             if i < self.height - 1:
                 rectangle += "\n"
         return rectangle
