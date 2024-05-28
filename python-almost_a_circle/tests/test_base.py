@@ -11,16 +11,25 @@ class TestBase(unittest.TestCase):
     def test_base_auto_id(self):
         """Test for automatically assigned IDs"""
         b1 = Base()
-        b2 = Base()
-        b3 = Base()
         self.assertEqual(b1.id, 1)
+        b2 = Base()
         self.assertEqual(b2.id, 2)
+        b3 = Base()
         self.assertEqual(b3.id, 3)
 
     def test_base_custom_id(self):
         """Test for custom ID assignment"""
+        b = Base(89)
+        self.assertEqual(b.id, 89)
+
+    def test_base_auto_id_after_custom(self):
+        """Test for automatic ID assignment after a custom ID"""
         b1 = Base(89)
         self.assertEqual(b1.id, 89)
+        b2 = Base()
+        self.assertEqual(b2.id, 1)
+        b3 = Base()
+        self.assertEqual(b3.id, 2)
 
     def test_to_json_string_none(self):
         """Test JSON string conversion for None"""
