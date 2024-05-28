@@ -63,12 +63,14 @@ class Rectangle(Base):
 
     # displays rectangle
     def display(self):
+        """prints rectangle with #"""
         print("\n" * self.y, end="")
         for _ in range(self.height):
             print(" " * self.x + '#' * self.width)
 
     # override str method
     def __str__(self):
+        """overriding the __str__ method"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.x, self.y, self.width, self.height)
 
@@ -85,6 +87,7 @@ class Rectangle(Base):
 
     # update method
     def update(self, *args, **kwargs):
+        """assigns argument to each attribute"""
         if args:
             attributes = ['id', 'width', 'height', 'x', 'y']
             for i, value in enumerate(args):
@@ -97,13 +100,16 @@ class Rectangle(Base):
 
     # validation methods
     def __validate_integer(self, name, value):
+        """check if is integer"""
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(name))
 
     def __validate_positive(self, name, value):
+        """check if integer is positive"""
         if value <= 0:
             raise ValueError("{} must be > 0".format(name))
 
     def __validate_non_negative(self, name, value):
+        """check if integer is > 0"""
         if value < 0:
             raise ValueError("{} must be >= 0".format(name))
