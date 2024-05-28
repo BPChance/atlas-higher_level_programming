@@ -52,8 +52,8 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        self.__validate_integer("x", value)
-        self.__validate_non_negative("x", value)
+        self.__validate_integer("y", value)
+        self.__validate_non_negative("y", value)
         self.__y = value
 
     # rectangle area
