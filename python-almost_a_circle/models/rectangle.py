@@ -20,7 +20,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         self.__validate_integer("width", value)
-        self.validate_positive("width", value)
+        self.__validate_positive("width", value)
         self.__width = value
 
     # height
