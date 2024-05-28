@@ -56,7 +56,7 @@ class Base:
         filename = "{}.json".format(cls.__name__)
         if not os.path.exists(filename):
             return []
-        
+
         with open(filename, 'r') as file:
             json_string = file.read()
             list_dictionaries = cls.from_json_string(json_string)
