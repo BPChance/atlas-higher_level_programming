@@ -77,7 +77,7 @@ class Rectangle(Base):
     # dictionary method
     def to_dictionary(self):
         """attributes of rectangle"""
-        return{
+        return {
             'id': self.id,
             'width': self.width,
             'height': self.height,
