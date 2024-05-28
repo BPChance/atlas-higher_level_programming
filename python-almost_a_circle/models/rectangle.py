@@ -43,7 +43,7 @@ class Rectangle(Base):
     def x(self, value):
         self.__validate_integer("x", value)
         self.__validate_non_negative("x", value)
-        self.__height = value
+        self.__x = value
 
     # y
     @property
@@ -54,12 +54,12 @@ class Rectangle(Base):
     def y(self, value):
         self.__validate_integer("x", value)
         self.__validate_non_negative("x", value)
-        self.__height = value
+        self.__y = value
 
     # rectangle area
     def area(self):
         """gets area of rectangle"""
-        self.width * self.height
+        return self.width * self.height
 
     # displays rectangle
     def display(self):
