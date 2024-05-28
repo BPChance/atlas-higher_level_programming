@@ -5,7 +5,7 @@ from models.rectangle import Rectangle
 
 class Square(Rectangle):
     """define a class Square"""
-    def __init__(self, size, x, y, id):
+    def __init__(self, size, x=0, y=0, id=None):
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
@@ -61,6 +61,6 @@ class Square(Rectangle):
             raise TypeError("{} must be an integer".format(name))
         
     def __validate_positive(self, name, value):
-        """check if integer is <= 0"""
+        """check if integer is positive"""
         if value <= 0:
             raise ValueError("{} must be > 0".format(name))
