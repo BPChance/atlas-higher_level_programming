@@ -59,7 +59,7 @@ class Square(Rectangle):
         """check if is integer"""
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(name))
-        
+
     def __validate_positive(self, name, value):
         """check if integer is positive"""
         if value <= 0:
