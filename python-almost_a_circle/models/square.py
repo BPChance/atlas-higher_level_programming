@@ -50,9 +50,11 @@ class Square(Rectangle):
 
     # validation methods
     def __validate_integer(self, name, value):
+        """check if is integer"""
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(name))
         
     def __validate_positive(self, name, value):
+        """check if integer is > 0"""
         if value <= 0:
             raise ValueError("{} must be > 0".format(name))
