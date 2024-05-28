@@ -24,6 +24,10 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def area(self):
+        """returns area of square"""
+        return self.width ** 2
+
     # update method
     def update(self, *args, **kwargs):
         """assigns attributes"""
