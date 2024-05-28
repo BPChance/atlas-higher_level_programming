@@ -19,6 +19,8 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
+        self.__validate_integer("size", value)
+        self.__validate_positive("size", value)
         self.width = value
         self.height = value
 
@@ -55,6 +57,6 @@ class Square(Rectangle):
             raise TypeError("{} must be an integer".format(name))
         
     def __validate_positive(self, name, value):
-        """check if integer is > 0"""
+        """check if integer is <= 0"""
         if value <= 0:
             raise ValueError("{} must be > 0".format(name))
