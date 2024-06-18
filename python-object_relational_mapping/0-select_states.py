@@ -14,7 +14,7 @@ def list_all_states(username, password, database):
     )
     cursor = conn.cursor()
     
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    cursor.execute("SELECT * FROM states;")
     
     for row in cursor.fetchall():
         print(row)
@@ -23,5 +23,4 @@ def list_all_states(username, password, database):
     conn.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) == 4:
         list_all_states(sys.argv[1], sys.argv[2], sys.argv[3])
