@@ -16,8 +16,9 @@ def list_all_states(username, password, database):
     
     cursor.execute("SELECT * FROM states;")
     
-    for row in cursor.fetchall():
-        print(row)
+    rows = cursor.fetchall()
+    for row in rows:
+          print(row)
     
     cursor.close()
     conn.close()
