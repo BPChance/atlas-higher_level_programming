@@ -11,7 +11,7 @@ def list_all_cities(username, password, database):
     conn = MySQLdb.connect(
         host="localhost",
         passwd=password,
-        db=database
+        db=database,
         port=3306
     )
 
