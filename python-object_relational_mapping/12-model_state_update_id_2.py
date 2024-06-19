@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" changes the name of a State object where id = 2 to New Mexico in the database hbtn_0e_6_usa """
+"""
+update a State object
+"""
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -14,9 +16,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State).filter(State.id == 2).first()
-    if state:
-        state.name = "New Mexico"
+    state_to_update = session.query(State).filter_by(id=2).first()
+    if state_to_update:
+        state_to_update.name = "New Mexico"
         session.commit()
 
     session.close()
