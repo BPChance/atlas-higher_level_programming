@@ -16,7 +16,8 @@ def list_all_cities(username, password, database):
     )
 
     cursor = conn.cursor()
-    cursor.execute("SELECT cities.id ORDER BY id ASC")
+    cursor.execute("SELECT cities.id, cities.name, states.name\
+                    FROM cities JOIN states ON cities.state_id = states.id")
 
     for row in cursor.fetchall():
         print(row)
