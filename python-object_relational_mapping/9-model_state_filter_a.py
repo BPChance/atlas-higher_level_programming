@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """ list states with "a" in their name """
 import sys
 from sqlalchemy import create_engine
