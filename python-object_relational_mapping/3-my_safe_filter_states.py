@@ -3,6 +3,7 @@
 import sys
 import MySQLdb
 
+
 def search_states_by_name(username, password, database, state_name):
     """
     Connects to a MySQL database and searches for states with a given name
