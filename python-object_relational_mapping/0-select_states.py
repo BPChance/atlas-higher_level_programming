@@ -14,13 +14,13 @@ def list_all_states(username, password, database):
         db=database
     )
     cursor = conn.cursor()
-    
+
     cursor.execute("SELECT * FROM states;")
-    
+
     rows = cursor.fetchall()
     for row in rows:
           print(row)
-    
+
     cursor.close()
     conn.close()
 

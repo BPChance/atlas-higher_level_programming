@@ -15,7 +15,7 @@ def list_cities_by_states(username, password, database, state_name):
         passwd=password,
         db=database
     )
-    
+
     cursor = conn.cursor()
 
     query = ("SELECT cities.id, cities.name FROM cities" 

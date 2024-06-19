@@ -3,6 +3,7 @@
 import sys
 import MySQLdb
 
+
 def search_states_by_name(username, password, database, state_name):
     """ Connects to a MySQL database and searches for states with a given name """
     conn = MySQLdb.connect(
@@ -17,10 +18,10 @@ def search_states_by_name(username, password, database, state_name):
     query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC".format(state_name)
 
     cursor.execute(query)
-    
+
     for row in cursor.fetchall():
         print(row)
-    
+
     cursor.close()
     conn.close()
 

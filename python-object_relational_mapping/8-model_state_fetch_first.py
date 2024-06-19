@@ -12,7 +12,7 @@ def print_first_state(username, password, database):
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    
+
     state = session.query(State).order_by(State.id).first()
 
     if state:

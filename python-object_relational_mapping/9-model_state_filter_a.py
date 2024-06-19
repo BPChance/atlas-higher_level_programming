@@ -9,13 +9,13 @@ from model_state import Base, State
 def list_states_with_a(username, password, database):
     """ connects to a MySQL database and lists all State objects containing the letter 'a' """
     engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost:3306/{database}')
-    
+
     Session = sessionmaker(bind=engine)
-    
+
     session = Session()
-    
+
     states = session.query(State).filter(State.name.like('%a%')).order_by(State.id).all()
-    
+
     for state in states:
         print(f"({state.id}) {state.name}")
 

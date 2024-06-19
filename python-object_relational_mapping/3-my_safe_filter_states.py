@@ -19,12 +19,12 @@ def search_states_by_name(username, password, database, state_name):
     cursor = conn.cursor()
 
     query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC".format(state_name)
-    
+
     cursor.execute(query)
 
     for row in cursor.fetchall():
         print(row)
-    
+
     cursor.close()
     conn.close()
 
