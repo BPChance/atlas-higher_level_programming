@@ -16,7 +16,7 @@ class Rectangle {
     }
 
     rotate() {
-        if (this.width && this,height) {
+        if (this.width && this.height) {
             [this.width, this.height] = [this.width, this.height];
         }
     }
