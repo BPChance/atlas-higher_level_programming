@@ -1,4 +1,5 @@
-#!usr/bin/node
+#!/usr/bin/node
+
 const Square = require('./5-square');
 
 class SquareExtend extends Square {
