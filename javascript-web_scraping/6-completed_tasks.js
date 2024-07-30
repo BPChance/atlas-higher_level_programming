@@ -6,18 +6,17 @@ request(url, (error, response, body) => {
   if (error) {
     console.error('Failed to retrieve data:', error);
     return;
-  }    
-    const tasks = JSON.parse(body);
-    const userTaskCount = {};
+  }
+  const tasks = JSON.parse(body);
+  const userTaskCount = {};
 
-    tasks.forEach(task => {
-      if (task.completed) {
-        const userId = task.userId;
-        if (!userTaskCount[userId]) {
-          userTaskCount[userId] = 0;
-        }
-        userTaskCount[userId]++;
+  tasks.forEach(task => {
+    if (task.completed) {
+      const userId = task.userId;if (!userTaskCount[userId]) {
+        userTaskCount[userId] = 0;
+    }
+    userTaskCount[userId]++;
       }
     });
-    console.log(userTaskCount);
+  console.log(userTaskCount);
   });
