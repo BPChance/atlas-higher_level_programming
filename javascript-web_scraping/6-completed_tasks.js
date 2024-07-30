@@ -1,36 +1,38 @@
 #!/usr/bin/node
 const request = require('request');
-const url = process.argv[2];
+const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
-request(url, (error, response, body) => {
-  if (error) {
-    console.error('Error:', error);
-    return;
-  }
-
-  const data = JSON.parse(body);
-  const completedTasksByUser = {};
-
-  for (const todo of data) {
-    const userId = todo.userId;
-
-    if (todo.completed) {
-      if (!completedTasksByUser[userId]) {
-        completedTasksByUser[userId] = 0;
-      }
-      completedTasksByUser[userId]++;
+function getCompletedTasks(apiUrl) {
+  request(apiUrl, (error, response, body) => {
+    if (error) {
+      console.error('Failed to retrieve data:', error);
+      return;
     }
-  }
+    if (response.statusCode !== 200) {
+      console.error('Failed to retrieve data: HTTP status', response.statusCode);
+      return;
+    }
+    
+    
+    const tasks = JSON.parse(body);
+    const userTaskCount = {};
 
-  const result = {};
-  for (let i = 1; i <= 10; i++) {
-    result[i] = completedTasksByUser[i] || 0;
-  }
-
-  let output = '';
-  for (let i = 1; i <= 10; i++) {
-    output += `  '${i}': ${result[i]},\n`;
-  }
-  output = output.slice(0, -2);
-  console.log(`{\n${output}\n}`);
+  tasks.forEach(task => {
+    if (task.completed) {
+      const userId = task.userId;
+      if (!userTaskCount[userId]) {
+        userTaskCount[userId] = 0;
+    }
+    userTaskCount[userId]++;
+}
 });
+
+  for (const userId in userTaskCount) {
+    if (userTaskCount[userId] > 0) {
+      console.log(`User ID: ${userId} - Completed Tasks: ${userTaskCount[userId]}`);
+    }
+}
+});
+}
+
+getCompletedTasks(apiUrl);
