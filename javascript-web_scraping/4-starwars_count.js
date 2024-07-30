@@ -17,7 +17,7 @@ function countWedgeAppearances(url) {
 
     for (const film of data.results) {
       for (const characterUrl of film.characters) {
-        if (characterUrl.endsWith(`/${characterID}`)) {
+        if (characterUrl.endsWith(`/${characterID}/`)) {
           totalCount++;
           break;
         }
