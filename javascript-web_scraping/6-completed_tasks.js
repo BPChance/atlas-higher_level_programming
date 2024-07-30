@@ -1,6 +1,6 @@
 #!/usr/bin/node
 const request = require('request');
-const url = 'https://jsonplaceholder.typicode.com/todos';
+const url = process.argv[2];
 
 request(url, (error, response, body) => {
   if (error) {
@@ -22,9 +22,12 @@ request(url, (error, response, body) => {
     }
   }
 
+  const filteredCompletedTasksByUser = {};
   for (const userId in completedTasksByUser) {
-    if (completedTasksByUser[userId] > 0) {
-      console.log(`User ID ${userId} has ${completedTasksByUser[userId]} completed tasks.`);
+    if (userId === '1' || userId === '2') {
+      filteredCompletedTasksByUser[userId] = completedTasksByUser[userId];
     }
   }
+
+  console.log(JSON.stringify(filteredCompletedTasksByUser));
 });
