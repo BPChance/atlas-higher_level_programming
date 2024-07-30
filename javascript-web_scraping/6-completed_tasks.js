@@ -12,11 +12,11 @@ request(url, (error, response, body) => {
 
   tasks.forEach(task => {
     if (task.completed) {
-      const userId = task.userId;if (!userTaskCount[userId]) {
+      const userId = task.userId; if (!userTaskCount[userId]) {
         userTaskCount[userId] = 0;
-    }
-    userTaskCount[userId]++;
       }
-    });
-  console.log(userTaskCount);
+      userTaskCount[userId]++;
+    }
   });
+  console.log(userTaskCount);
+});
