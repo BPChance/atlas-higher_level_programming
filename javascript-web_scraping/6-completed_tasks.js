@@ -13,26 +13,21 @@ function getCompletedTasks(apiUrl) {
       return;
     }
     
-    
     const tasks = JSON.parse(body);
     const userTaskCount = {};
 
-  tasks.forEach(task => {
-    if (task.completed) {
-      const userId = task.userId;
-      if (!userTaskCount[userId]) {
-        userTaskCount[userId] = 0;
-    }
-    userTaskCount[userId]++;
-}
-});
+    tasks.forEach(task => {
+      if (task.completed) {
+        const userId = task.userId;
+        if (!userTaskCount[userId]) {
+          userTaskCount[userId] = 0;
+        }
+        userTaskCount[userId]++;
+      }
+    });
 
-  for (const userId in userTaskCount) {
-    if (userTaskCount[userId] > 0) {
-      console.log(`User ID: ${userId} - Completed Tasks: ${userTaskCount[userId]}`);
-    }
-}
-});
+    console.log(userTaskCount);
+  });
 }
 
 getCompletedTasks(apiUrl);
