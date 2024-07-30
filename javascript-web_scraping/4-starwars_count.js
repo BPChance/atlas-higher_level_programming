@@ -24,8 +24,6 @@ function countWedgeAppearances(url) {
       }
     }
 
-    console.log(count);
-
     if (nextUrl) {
       countWedgeAppearances(nextUrl);
     } else {
