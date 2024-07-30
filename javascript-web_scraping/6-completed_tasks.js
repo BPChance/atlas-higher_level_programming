@@ -2,7 +2,7 @@
 const request = require('request');
 const url = process.argv[2];
 
-request(apiUrl, (error, response, body) => {
+request(url, (error, response, body) => {
   if (error) {
     console.error('Failed to retrieve data:', error);
     return;
@@ -21,4 +21,3 @@ request(apiUrl, (error, response, body) => {
     });
     console.log(userTaskCount);
   });
-
