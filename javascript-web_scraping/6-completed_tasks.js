@@ -22,13 +22,15 @@ request(url, (error, response, body) => {
     }
   }
 
-  const filteredCompletedTasksByUser = {};
-  for (const userId in completedTasksByUser) {
-    if (userId === '1' || userId === '2') {
-      filteredCompletedTasksByUser[userId] = completedTasksByUser[userId];
-    }
+  const result = {};
+  for (let i = 1; i <= 10; i++) {
+    result[i] = completedTasksByUser[i] || 0;
   }
 
-  const formattedOutput = `{ '1': ${filteredCompletedTasksByUser['1']}, '2': ${filteredCompletedTasksByUser['2']} }`;
-  console.log(formattedOutput);
+  let output = '';
+  for (let i = 1; i <= 10; i++) {
+    output += `  '${i}': ${result[i]},\n`;
+  }
+  output = output.slice(0, -2);
+  console.log(`{\n${output}\n}`);
 });
