@@ -29,5 +29,6 @@ request(url, (error, response, body) => {
     }
   }
 
-  console.log(JSON.stringify(filteredCompletedTasksByUser));
+  const formattedOutput = `{ '1': ${filteredCompletedTasksByUser['1']}, '2': ${filteredCompletedTasksByUser['2']} }`;
+  console.log(formattedOutput);
 });
