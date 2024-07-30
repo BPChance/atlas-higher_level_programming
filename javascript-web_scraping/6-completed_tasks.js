@@ -1,18 +1,12 @@
 #!/usr/bin/node
 const request = require('request');
-const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
+const url = process.argv[2];
 
-function getCompletedTasks(apiUrl) {
-  request(apiUrl, (error, response, body) => {
-    if (error) {
-      console.error('Failed to retrieve data:', error);
-      return;
-    }
-    if (response.statusCode !== 200) {
-      console.error('Failed to retrieve data: HTTP status', response.statusCode);
-      return;
-    }
-    
+request(apiUrl, (error, response, body) => {
+  if (error) {
+    console.error('Failed to retrieve data:', error);
+    return;
+  }    
     const tasks = JSON.parse(body);
     const userTaskCount = {};
 
@@ -25,9 +19,6 @@ function getCompletedTasks(apiUrl) {
         userTaskCount[userId]++;
       }
     });
-
     console.log(userTaskCount);
   });
-}
 
-getCompletedTasks(apiUrl);
