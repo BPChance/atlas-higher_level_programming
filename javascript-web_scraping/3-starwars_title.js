@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 const episodeNumber = process.argv[2];
-const url = 'https://swapi-api.hbtn.io/api/films/${episodeNumber}';
+const url = `https://swapi-api.hbtn.io/api/films/${episodeNumber}`;
 
 request(url, (error, response, body) => {
   if (error) {
