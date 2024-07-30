@@ -1,35 +1,32 @@
 #!/usr/bin/node
 const request = require('request');
-const baseUrl = 'https://swapi-api.hbtn.io/api/films/';
-const characterID = 18;
+const apiUrl = process.argv[2];
 
-let totalCount = 0;
-
-function countWedgeAppearances(url) {
-  request(url, (error, response, body) => {
-    if (error) {
-      console.error('Error:', error);
-      return;
-    }
-
-    const data = JSON.parse(body);
-    const nextUrl = data.next;
-
-    for (const film of data.results) {
-      for (const characterUrl of film.characters) {
-        if (characterUrl.endsWith(`/${characterID}/`)) {
-          totalCount++;
-          break;
-        }
-      }
-    }
-
-    if (nextUrl) {
-      countWedgeAppearances(nextUrl);
-    } else {
-      console.log(totalCount);
-    }
-  });
+if (!apiUrl) {
+  console.log('Please provide the API URL as the first argument.');
+  process.exit(1);
 }
 
-countWedgeAppearances(baseUrl);
+request(apiUrl, (error, response, body) => {
+  if (error) {
+    console.error('Error fetching data:', error);
+    return;
+  }
+
+  if (response.statusCode !== 200) {
+    console.error('Failed to fetch data. Status code:', response.statusCode);
+    return;
+  }
+
+  const data = JSON.parse(body);
+  const films = data.results;
+  let count = 0;
+
+  films.forEach((film) => {
+    if (film.characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
+      count++;
+    }
+  });
+
+  console.log(count);
+});
