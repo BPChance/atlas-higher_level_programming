@@ -3,6 +3,8 @@ const request = require('request');
 const baseUrl = 'https://swapi-api.hbtn.io/api/films/';
 const characterID = 18;
 
+let totalCount = 0;
+
 function countWedgeAppearances(url) {
   request(url, (error, response, body) => {
     if (error) {
@@ -13,11 +15,10 @@ function countWedgeAppearances(url) {
     const data = JSON.parse(body);
     const nextUrl = data.next;
 
-    let count = 0;
     for (const film of data.results) {
       for (const characterUrl of film.characters) {
         if (characterUrl.endsWith(`/${characterID}`)) {
-          count++;
+          totalCount++;
           break;
         }
       }
@@ -27,6 +28,8 @@ function countWedgeAppearances(url) {
 
     if (nextUrl) {
       countWedgeAppearances(nextUrl);
+    } else {
+      console.log(totalCount);
     }
   });
 }
